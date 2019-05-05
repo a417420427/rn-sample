@@ -1,23 +1,24 @@
 
 import * as React from 'react'
-import {PageHeader} from './components/PageHeader'
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import {Home} from './pages/Home'
-import {Write} from './pages/Write'
-import {Login} from './pages/Login'
-import {Signup} from './pages/Signup'
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
+
+
+import Home from './containers/Home'
+import Write from './containers/Write'
+
+import Signup from './containers/Signup'
+
+import Login from './containers/Login'
 
 import './styles/reset.scss'
 
-
-
-
-
+ 
 
 
 interface IAppProps {}
 interface IAppState {}
+
 
 export class App extends React.Component<IAppProps, IAppState> {
   public render(): JSX.Element {
@@ -34,3 +35,5 @@ export class App extends React.Component<IAppProps, IAppState> {
     )
   }
 }
+
+

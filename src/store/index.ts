@@ -1,27 +1,41 @@
-import { Reducer, createStore as reduxCreateStore} from 'redux'
+import { Reducer, createStore as reduxCreateStore, Store, applyMiddleware} from 'redux'
 import { produce } from 'immer'
 import { ActionType, createStandardAction} from 'typesafe-actions'
-
-export interface State {
-    loginStatus: boolean
-}
+import { login } from '../services';
+import { RootState, LoginData } from '../types'
 
 
-export enum ActionTypes {
-    login =  'action:login'
-}
-
-export const actionCreators = {
-    login: createStandardAction(ActionTypes.login)<{status: boolean}>()
+//state
+export const initState: RootState = {
+    loginStatus: false,
+    articleList: [],
+    currentContent: {
+      title: '',
+      content: '',
+      date: '',
+      auth: ''
+    }
   }
 
+export enum ActionTypes {
+    login =  'action:login',
+    write = 'action:write',
+    list = 'action:list',
+    comment = 'action:comment'
+}
+
+// actions
+export const actionCreators = {
+    login: createStandardAction(ActionTypes.login)<{data: LoginData}>()
+}
 
 export type Actions = ActionType<typeof actionCreators>
 
-export const reducer = produce((state: State , action: Actions) => {
+// reducer
+export const reducer = produce((state: RootState , action: Actions) => {
     switch (action.type) {
         case ActionTypes.login:
-            state.loginStatus = action.payload.status
+            login(state, action.payload.data)
         default:
             return
     }
@@ -29,12 +43,17 @@ export const reducer = produce((state: State , action: Actions) => {
 
 export const catchReducerErrors = (reducer: Reducer): Reducer => {
     return (state, action) =>  reducer(state, action)
-  }
-  
-export async function createStore(initState: any = {}) {
-    const store = reduxCreateStore(
-        catchReducerErrors(reducer),
-        initState
-    )
-    return store
+}
+
+
+export function createStore( initialState?: RootState): Store<RootState> {
+
+    // store 中间件，根据个人需求添加
+    const middleware = applyMiddleware();
+    
+     return reduxCreateStore(
+            catchReducerErrors(reducer),
+            initialState as any,
+            middleware
+      ) as Store<RootState>;
 }

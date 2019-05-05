@@ -1,7 +1,16 @@
 import * as React from 'react'
+import { RouteComponentProps } from 'react-router'
 
-
-export class Home extends React.Component {
+interface LoginProps extends  RouteComponentProps{
+    loginStatus: boolean
+}
+export class Home extends React.Component<LoginProps> {
+    componentWillMount(){
+        console.log(this.props)
+        if(!this.props.loginStatus) {
+            this.props.history.push('/login')
+        }
+    }
     render() {
         return <div className="page-home">
             <h1>主页</h1>
