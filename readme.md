@@ -4,6 +4,7 @@
 
 # TODOLIST
 - [x] 环境搭建
+- [x] 集成redux+typscript
 - [ ] 登陆注册 
 - [ ] 编辑器
 - [ ] 文章列表和上传

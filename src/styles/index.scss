@@ -1,0 +1,19 @@
+@import './reset.scss';
+
+body, html, #app{
+    width: 100%;
+    height: 100%;
+}
+
+.dp-n {
+    display: none;
+}
+.dp-f {
+    display: flex;
+}
+.dp-b {
+    display: block;
+}
+.dp-ib {
+    display: inline-block;
+}

@@ -16,7 +16,10 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"]
+        extensions: [".ts", ".tsx", ".js", ".json"],
+        alias: {
+          'assetsRoot': path.resolve(__dirname, '../src/assets')
+        }
     },
 
     module: {
@@ -71,7 +74,6 @@ module.exports = {
             // },
             {
               test: /\.(svg|svgz)$/,
-              issuer: /\.(less|css|sass|scss)$/,
               use: [
                 {
                   loader: 'url-loader',

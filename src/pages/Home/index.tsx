@@ -6,7 +6,6 @@ interface LoginProps extends  RouteComponentProps{
 }
 export class Home extends React.Component<LoginProps> {
     componentWillMount(){
-        console.log(this.props)
         if(!this.props.loginStatus) {
             this.props.history.push('/login')
         }

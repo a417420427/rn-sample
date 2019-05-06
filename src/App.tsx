@@ -11,26 +11,35 @@ import Signup from './containers/Signup'
 
 import Login from './containers/Login'
 
-import './styles/reset.scss'
+import './styles/index.scss'
 
  
 
 
-interface IAppProps {}
+interface IAppProps {
+  loginStatus: boolean
+}
 interface IAppState {}
 
 
 export class App extends React.Component<IAppProps, IAppState> {
+  // 重定向
+  private renderApp = () => {
+    if(this.props.loginStatus) {
+      return <Redirect to="/home"/>
+    } else {
+      return <Redirect to="/login"/>
+    }
+  }
   public render(): JSX.Element {
-    console.log(this)
     return (
       <Router>
-        <div>
+          <Route exact path="/" render={this.renderApp}/>
           <Route path="/home" component={Home} ></Route>
           <Route path="/write" component={Write} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-        </div>
+        
       </Router>
     )
   }
