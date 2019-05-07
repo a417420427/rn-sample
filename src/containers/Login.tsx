@@ -6,14 +6,17 @@ import { RootState, LoginData } from '../types'
 import { Actions, actionCreators } from '../store';
 import { Login } from '../pages/Login'
 
-const mapStateToProps = (state: RootState) => ({
+const mapStateToProps = (state: RootState) => {
+  console.log(state, '---')
+  return ({
     loginStatus: state.loginStatus,
     list: state.articleList
 })
+}
 
 
 const mapDispatchToProps =  (dispatch: Dispatch<Actions>, state: RootState) => ({
-  login: async (data: LoginData) => {
+  onLogin: async (data: LoginData) => {
     return dispatch(actionCreators.login({data}))
   }
 })

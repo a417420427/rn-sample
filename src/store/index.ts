@@ -32,10 +32,12 @@ export const actionCreators = {
 export type Actions = ActionType<typeof actionCreators>
 
 // reducer
-export const reducer = produce((state: RootState , action: Actions) => {
+export const reducer = produce( (state: RootState , action: Actions) => {
     switch (action.type) {
         case ActionTypes.login:
-            login(state, action.payload.data)
+             login(action.payload.data).then(res => {
+                state.loginStatus = res
+             })
         default:
             return
     }
