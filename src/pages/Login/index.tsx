@@ -1,13 +1,10 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router'
-import loginBg from '../../assets/af.svg'
 import './index.scss'
 import { Link } from 'react-router-dom';
-
 interface LoginProps extends RouteComponentProps {
     loginStatus: boolean
-}
-console.log(loginBg)
+} 
 
 export class Login extends React.Component<LoginProps> {
     componentWillMount() {
@@ -17,7 +14,6 @@ export class Login extends React.Component<LoginProps> {
     }
 
     render() {
-        console.log(this)
         return <div className="page-login">
             <div className="login-box dp-f">
                 <div className="login-box-left">

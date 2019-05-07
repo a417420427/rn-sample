@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
+import loginBg from './assets/background.jpg'
 
 
 import Home from './containers/Home'
@@ -13,7 +14,7 @@ import Login from './containers/Login'
 
 import './styles/index.scss'
 
- 
+ console.log(loginBg)
 
 
 interface IAppProps {
