@@ -11,12 +11,10 @@ import Login from './containers/Login'
 import './styles/index.scss'
 
 
-
 interface IAppProps {
   loginStatus: boolean
 }
 interface IAppState {}
-
 
 export class App extends React.Component<IAppProps, IAppState> {
   // 重定向
