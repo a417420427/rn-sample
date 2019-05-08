@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { LoginData } from '../../types';
+import { simplePassword, phonePattern } from '../../utils/pattern';
 
 interface SignupProps {
     signup: (data: LoginData) => void
@@ -8,9 +9,9 @@ interface SignupProps {
 const SignupContent = React.memo((props: { signup: (data: LoginData) => void }) => {
     const [username, setUsername] = React.useState('')
     const [password, setPassword] = React.useState('')
-
+    
     const signupClick = () => {
-        if(username && password) {
+        if(simplePassword.test(password) && phonePattern.test(username)) {
             props.signup({username, password})
         }
     }
