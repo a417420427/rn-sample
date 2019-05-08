@@ -1,10 +1,35 @@
 import * as React from 'react'
+import { LoginData } from '../../types';
 
+interface SignupProps {
+    signup: (data: LoginData) => void
+ }
 
-export class Signup extends React.Component {
+const SignupContent = React.memo((props: { signup: (data: LoginData) => void }) => {
+    const [username, setUsername] = React.useState('')
+    const [password, setPassword] = React.useState('')
+
+    const signupClick = () => {
+        if(username && password) {
+            props.signup({username, password})
+        }
+    }
+
+    return <div className="signup-box-right">
+        <div>
+                <input type="text" value={username} onChange={ (e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.currentTarget.value) }/>
+            </div>
+            <div>
+                <input type="password" value={password} onChange={ (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.currentTarget.value) }/>
+            </div>
+            <button onClick={signupClick}>注册</button>
+    </div>
+})
+
+export class Signup extends React.Component<SignupProps> {
     render() {
         return <div className="page-signup">
-            <h1>注册</h1>
+            <SignupContent signup={this.props.signup} />
         </div>
     }
 }

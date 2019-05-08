@@ -1,7 +1,7 @@
 import { Reducer, createStore as reduxCreateStore, Store, applyMiddleware} from 'redux'
 import { produce } from 'immer'
 import { ActionType, createStandardAction} from 'typesafe-actions'
-import { login } from '../services';
+import { login, signup } from '../services';
 import { RootState, LoginData } from '../types'
 
 
@@ -21,12 +21,14 @@ export enum ActionTypes {
     login =  'action:login',
     write = 'action:write',
     list = 'action:list',
-    comment = 'action:comment'
+    comment = 'action:comment',
+    signup = 'action:signup'
 }
 
 // actions
 export const actionCreators = {
-    login: createStandardAction(ActionTypes.login)<{data: LoginData}>()
+    login: createStandardAction(ActionTypes.login)<{data: LoginData}>(),
+    signup: createStandardAction(ActionTypes.signup)<{data: LoginData}>()
 }
 
 export type Actions = ActionType<typeof actionCreators>
@@ -38,6 +40,9 @@ export const reducer = produce( (state: RootState , action: Actions) => {
              login(action.payload.data).then(res => {
                 state.loginStatus = res
              })
+             break
+        case ActionTypes.signup:
+             signup(action.payload.data)
         default:
             return
     }
