@@ -5,8 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin')
+const MinCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = merge(baseConfig, {
     mode: 'production',
+    // entry: {
+    //     index: path.resolve(__dirname, "../src/index.tsx"),
+    //     vendors:
+    // }, 
     optimization: {
         namedChunks: true,
         namedModules: true,
@@ -38,6 +43,9 @@ module.exports = merge(baseConfig, {
             new HtmlWebpackPlugin({
                 filename: 'index.html',
                 template: path.resolve(__dirname, '../index.html')
+            }),
+            new MinCssExtractPlugin({
+                filename: '[name].css'
             })
         ],
     },

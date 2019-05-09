@@ -6,7 +6,7 @@
             "dom"
         ],
         "rootDir": "src",
-        "module": "commonjs",
+        "module": "esnext",
         "target": "es6",
         "sourceMap": true,
         "moduleResolution": "node",

@@ -20,6 +20,7 @@ module.exports = {
     ],
   ].filter(i => i),
   presets: [
+    '@babel/preset-react',
     [
       '@babel/preset-env',
       {
