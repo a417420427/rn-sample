@@ -8,10 +8,12 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 const MinCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = merge(baseConfig, {
     mode: 'production',
-    // entry: {
-    //     index: path.resolve(__dirname, "../src/index.tsx"),
-    //     vendors:
-    // }, 
+    output: {
+        filename: "[name]-[hash:4].js",
+        path: path.resolve(__dirname, "../dist"),
+        chunkFilename: '[name].[chunkhash:4].js',
+        publicPath: '/rt/'
+    },
     optimization: {
         namedChunks: true,
         namedModules: true,
