@@ -1,9 +1,11 @@
 const pkgConfig = require('./package.json')
 const ENV = process.env.NODE_ENV || 'development'
-
+const isProd = ENV === 'development'
 module.exports = {
   plugins: [
+    '@babel/plugin-transform-runtime',
     '@babel/plugin-syntax-dynamic-import',
+    '@loadable/babel-plugin',
     ENV === 'development' ? 'react-hot-loader/babel' : undefined,
     [
       'transform-imports',
@@ -18,6 +20,7 @@ module.exports = {
         },
       },
     ],
+    isProd ? null : "dynamic-import-node"
   ].filter(i => i),
   presets: [
     '@babel/preset-react',

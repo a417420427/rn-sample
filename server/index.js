@@ -1,3 +1,4 @@
+
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -25,6 +26,17 @@ if (isProd) {
 }
 
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);  
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");  
+  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
+  res.header("X-Powered-By",' 3.2.1')  
+  res.header("Content-Type", "application/json;charset=utf-8");
+  // 允许证书 携带cookie
+  res.header("Access-Control-Allow-Credentials", "true")
+  next();
+});
 
 const render = (req, res, next) => {
   console.log("======enter server======");

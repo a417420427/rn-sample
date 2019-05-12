@@ -35,7 +35,8 @@ const webpackConfig = merge(baseWebpackConfig, {
                 ]
               ],
               plugins: [
-                "@loadable/babel-plugin"
+                "@loadable/babel-plugin",
+                "@babel/plugin-transform-runtime"
               ]
             }
           },

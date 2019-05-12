@@ -33,7 +33,8 @@ const webpackConfig = merge(baseWebpackConfig, {
                 babelrc: false,
                 plugins: [
                   "dynamic-import-node",
-                  "@loadable/babel-plugin"
+                  "@loadable/babel-plugin",
+                  "@babel/plugin-transform-runtime"
                 ]
               }
             },
