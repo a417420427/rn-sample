@@ -49,50 +49,52 @@ export class Login extends React.Component<LoginProps, LoginState> {
 
     }
     render() {
-        return <div className="page-login">
-            <div className="login-box dp-f">
-                <div className="login-box-left">
-                    <div className="login-left-logo">
+        return (
+            <div className="page-login">
+                <div className="login-box dp-f">
+                    <div className="login-box-left">
+                        <div className="login-left-logo">
+                        </div>
                     </div>
-                </div>
-                <div className="login-box-right">
-                    <div className="login-title">
-                        欢迎登录
-                    </div>
-                    <div className="login-verify">
-                        <div className="login-username">
-                            <input 
-                                value={this.state.username} 
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({username: e.currentTarget.value})} 
-                                type="text" placeholder="请输入用户名"
-                            />
+                    <div className="login-box-right">
+                        <div className="login-title">
+                            欢迎登录
                         </div>
-                        <div className="login-passwprd">
-                            <input 
-                            value={this.state.password} 
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({password: e.currentTarget.value})} 
-                            type="password" placeholder="请输入密码"/>
-                        </div>
-                        <div className="login-tip dp-f">
-                            <div className="tip-confirm">
-                                确定登录
+                        <div className="login-verify">
+                            <div className="login-username">
+                                <input 
+                                    value={this.state.username} 
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({username: e.currentTarget.value})} 
+                                    type="text" placeholder="请输入用户名"
+                                />
                             </div>
-                            <div className="tip-forget">
-                                忘记密码
+                            <div className="login-passwprd">
+                                <input 
+                                value={this.state.password} 
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({password: e.currentTarget.value})} 
+                                type="password" placeholder="请输入密码"/>
                             </div>
-                        </div>
-                        <div className="login-button">
-                            <button onClick={ this.onLogin }>确定</button>
-                        </div>
-                        <div className="login-sig">
-                            您还不是会员？要 <Link to='/signup'>立即注册</Link>
-                        </div>
-                        <div className="login-third dp-n">
-                            //todo 第三方登录
+                            <div className="login-tip dp-f">
+                                <div className="tip-confirm">
+                                    确定登录
+                                </div>
+                                <div className="tip-forget">
+                                    忘记密码
+                                </div>
+                            </div>
+                            <div className="login-button">
+                                <button onClick={ this.onLogin }>确定</button>
+                            </div>
+                            <div className="login-sig">
+                                您还不是会员？要 <Link to='/signup'>立即注册</Link>
+                            </div>
+                            <div className="login-third dp-n">
+                                //todo 第三方登录
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        )
     }
 }

@@ -11,8 +11,10 @@ export class Home extends React.Component<LoginProps> {
         }
     }
     render() {
-        return <div className="page-home">
-            <h1>主页</h1>
-        </div>
+        return (
+            <div className="page-home">
+                <h1>主页</h1>
+            </div>
+        )
     }
 }

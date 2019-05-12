@@ -25,7 +25,8 @@ const SignupContent = React.memo((props: { signup: (data: LoginData) => void }) 
         
     }
 
-    return <div className="signup-box-right">
+    return (
+        <div className="signup-box-right">
         <div>
                 <input type="text" value={username} onChange={ (e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.currentTarget.value) }/>
             </div>
@@ -35,13 +36,16 @@ const SignupContent = React.memo((props: { signup: (data: LoginData) => void }) 
             <button onClick={signupClick}>注册</button>
             <ToastContainer hideProgressBar={true} />
     </div>
+    )
 })
 
 export class Signup extends React.Component<SignupProps> {
 
     render() {
-        return <div className="page-signup">
-            <SignupContent signup={this.props.signup} />
-        </div>
+        return (
+            <div className="page-signup">
+                <SignupContent signup={this.props.signup} />
+            </div>
+        )
     }
 }
