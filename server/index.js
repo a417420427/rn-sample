@@ -41,7 +41,6 @@ app.all('*', function(req, res, next) {
 const render = (req, res, next) => {
   console.log("======enter server======");
   console.log("visit url: " + req.url);
-  console.log(req.url.startsWith('/dist'));
   // 静态资源不进行重定向
   if(req.url.startsWith('/dist')) {
     next()
@@ -54,6 +53,8 @@ const render = (req, res, next) => {
           res.status(error.code).send("error code：" + error.code);
         }
       }
+      // 设置contentTyype 不然有可能会渲染出字符串而非html
+      res.set('Content-Type', 'text/html');
       res.send(html);
     }).catch(error => {
       console.log(error);
@@ -68,6 +69,6 @@ app.get("*", isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res));
 });
 
-app.listen(3000, () => {
+app.listen(9000, () => {
   console.log("Your app is running");
 });
